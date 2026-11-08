@@ -1,0 +1,416 @@
+local WindUI = loadstring(game:HttpGet("https://article-hub-studio.github.io/WindUI-Skibidi/main.lua"))()
+pcall(function() WindUI:SetTheme("Purple") end)
+pcall(function() WindUI:SetTheme("Amethyst") end)
+
+local Window = WindUI:CreateWindow({
+    Título = "DRIP TAF",
+    TypeWindow = "modern",
+    Ícone = "chapéu de formatura",
+    ToggleKey = "RightShift",
+    Arrastável = verdadeiro,
+})
+
+função local CopiarTexto(Texto)
+    sucesso local = falso
+    if setclipboard then pcall(setclipboard, Texto) sucesso = true
+    elseif toclipboard then pcall(toclipboard, Texto) sucesso = true
+    senão se set_clipboard então pcall(set_clipboard, Texto) sucesso = verdadeiro
+    fim
+    
+    Se tiver sucesso, então
+        WindUI:Notify({ Type = "Originalmente", Title = "Copiado!", Content = "Texto copiado." })
+    outro
+        WindUI:Notify({ Type = "Originalmente", Title = "Erro", Content = "Seu executor não suporta copiar." })
+    fim
+fim
+
+-- =========================================
+-- PRINCIPAL ABA
+-- =========================================
+local TabPrincipal = Window:Tab({ Title = "Principal", Icon = "home" })
+TabPrincipal:Select()
+
+local SecCreditos = TabPrincipal:Section({ Title = "Créditos", TextXAligment = "Left" })
+SecCreditos:Paragraph({ Title = "Criador: Falouzin antigo\nServidor: gotejamento", Desc = "Agradecimentos especiais ao servidor." })
+
+local SecSelecao = TabPrincipal:Section({ Title = "Seleção de TAF", TextXAlignment = "Left" })
+local AbasCriadas = {}
+
+local CategoriaDropdown = SecSelecao:Dropdown({
+    Título = "Escolha o que quer",
+    Valores = { "BAC", "BFE", "BIP", "CIE", "REC-MEC", "BPE", "BI CAAT", "CIGS", "CYBER" },
+    Valor = nulo,
+    Multi = false,
+    AllowNone = true,
+    Callback = função(selecionado)
+        Se não estiver selecionado, retorne ao fim.
+        
+        se não AbasCriadas[selecionado] então
+            local NovaAba = Window:Tab({ Title = selected, Icon = "shield" })
+            AbasCriadas[selecionado] = NovaAba
+            NovaAba:Select()
+            task.wait(0.2)
+            
+            -- =========================================
+            -- ABA BAC
+            -- =========================================
+            Se selecionado == "BAC" então
+                local Sec3 = NovaAba:Section({ Title = "até o BAC", TextXAligment = "Left" })
+                SecSobre:Paragraph({ Title = "O Batalhão de Ações de Comandos (BAC) é uma unidade de elite do Exército, especializada em operações de alto risco, sabotagens e ações diretas atrás das linhas inimigas.", Desc = "" })
+                SecSobre:Button({ Title = "Copiar Informação", Icon = "copy", Callback = function() CopiarTexto("O Batalhão de Ações de Comandos (BAC) é uma unidade de elite do Exército, especializada em operações de alto risco, sabotagens e ações diretas atrás das linhas inimigas.") end })
+
+                local SecNomes = NovaAba:Section({ Title = "Nomes", TextXAligment = "Left" })
+                SecNomes:Paragraph({ Title = "DONO: MateusHgz", Desc = "" })
+                SecNomes:Button({ Title = "Copiar Doação", Icon = "copiar", Callback = function() CopiarTexto("MateusHgz") end })
+                SecNomes:Paragraph({ Title = "COMANDANTE: SasukeePro202", Desc = "" })
+                SecNomes:Button({ Title = "Copiar Comandante", Icon = "copy", Callback = function() CopiarTexto("SasukeePro202") end })
+                SecNomes:Paragraph({ Title = "Subcomandante: banana_splite100", Desc = "" })
+                SecNomes:Button({ Title = "Copiar Subcomandante", Icon = "copy", Callback = function() CopiarTexto("banana_splite100") end })
+                
+                local SecLema = NovaAba:Section({ Title = "Lema BAC", TextXAligment = "Left" })
+                SecLema:Paragraph({ Title = '"O máximo de confusão, morte e destruição na retaguarda do inimigo."', Desc = "" })
+                SecLema:Button({ Title = "Copiar Lema", Icon = "copy", Callback = function() CopiarTexto("O máximo de confusão, morte e destruição na retaguarda do inimigo.") end })
+                
+                local SecSaudações = NovaAba:Section({ Title = "Saudações", TextXAlignment = "Left" })
+                SecSaudações:Paragraph({ Title = "Saudações, senhor Comando.", Desc = "" })
+                SecSaudacoes:Button({ Title = "Copiar Saudação 1", Icon = "copy", Callback = function() CopiarTexto("Saudações, senhor Comando.") end })
+                SecSaudacoes:Paragraph({ Title = "Saudações, senhores Comandos.", Desc = "" })
+                SecSaudacoes:Button({ Title = "Copiar Saudação 2", Icon = "copy", Callback = function() CopiarTexto("Saudações, senhores Comandos.") end })
+                
+                local SecMarchas = NovaAba:Section({ Title = "MARCHAS", TextXAligment = "Left" })
+                marchas locais = { "ATENÇÃO PELOTÃO, PREPARAR PARA MARCHAR!", "PELOTÃO, MARCHE!", "PELOTÃO, AUTO!", "EM DIREÇÃO Á PRAIA!", "FORMEM UM OMBRO A OMBRO NO MAR!", "FORA DE FORMA!", "MARCHE!", "EM DIREÇÃO À ÁREA DE PARKOURS!" }
+                para i, texto em ipairs(marchas) do
+                    SecMarchas:Parágrafo({ Título = texto, Desc = "" })
+                    SecMarchas:Button({ Title = "Copiar Marcha "..i, Icon = "copy", Callback = function() CopiarTexto(texto) end })
+                fim
+            
+            -- =========================================
+            -- ABA BFE
+            -- =========================================
+            senão se selecionado == "BFE" então
+                local SecSobre = NovaAba:Section({ Title = "Sobre o BFE", TextXAlignment = "Left" })
+                SecSobre:Paragraph({ Title = "O Batalhão de Forças Especiais (BFE) é uma divisão de alta operação, responsável por preparar seus membros para operações, treinamentos, patrulhamentos e demais atividades, contribuindo para o funcionamento do Exército Brasileiro.", Desc = "" })
+                SecSobre:Button({ Title = "Copiar Informação", Icon = "copy", Callback = function() CopiarTexto("O Batalhão de Forças Especiais (BFE) é uma divisão de alta operação, responsável por preparar seus membros para operações, treinamentos, patrulhamentos e demais atividades, contribuindo para o funcionamento do Exército Brasileiro.") end })
+
+                local SecInfo = NovaAba:Section({ Title = "⚔️ Informações BFE", TextXAlignment = "Left" })
+                SecInfo:Paragraph({ Title = "Comandante: TILÁPIA_PROFISSIONAL", Desc = "" })
+                SecInfo:Button({ Title = "Copiar Comandante", Icon = "copiar", Callback = function() CopiarTexto("TILÁPIA_PROFISSIONAL") end })
+                SecInfo:Paragraph({ Title = "Subcomandante: nonezinz", Desc = "" })
+                SecInfo:Button({ Title = "Copiar Subcomandante", Icon = "copy", Callback = function() CopiarTexto("nonezinz") end })
+                SecInfo:Paragraph({ Title = 'Lema: "Qualquer missão, em qualquer lugar, a qualquer hora, de qualquer maneira."', Desc = "" })
+                SecInfo:Button({ Title = "Copiar Lema", Icon = "copy", Callback = function() CopiarTexto("Qualquer missão, em qualquer lugar, a qualquer hora, de qualquer maneira.") end })
+                SecInfo:Paragraph({ Title = "Criador: Kk7 (NATANHMELLO4)", Desc = "" })
+                SecInfo:Button({ Title = "Copiar Criador", Icon = "copiar", Callback = function() CopiarTexto("Kk7 (NATANHMELLO4)") end })
+                
+                local SecPerg1 = NovaAba:Section({ Title = "Pergunta 1", TextXAlignment = "Left" })
+                SecPerg1:Paragraph({ Title = "Qual o nome do instrutor responsável por este TAF?", Desc = "O nome do Roblox informado pelo instrutor no início." })
+                SecPerg1:Button({ Title = "Copiar Resposta 1", Icon = "copy", Callback = function() CopiarTexto("O nome do Roblox informado pelo instrutor no início.") end })
+                
+                local SecPerg2 = NovaAba:Section({ Title = "Pergunta 2", TextXAligment = "Left" })
+                SecPerg2:Paragraph({ Title = "Qual a importância do BFE?", Desc = "O BFEsp é importante por ser uma divisão de alta operação, responsável por preparar seus membros para operações, treinamentos, patrulhamentos e demais atividades, contribuindo para o funcionamento do Exército Brasileiro." })
+                SecPerg2:Button({ Title = "Copiar Resposta 2", Icon = "copy", Callback = function() CopiarTexto("O BFEsp é importante por ser uma divisão de alta operação, responsável por preparar seus membros para operações, treinamentos, patrulhamentos e demais atividades, contribuindo para o funcionamento do Exército Brasileiro.") end })
+                
+                local SecSaudacoesBFE = NovaAba:Section({ Title = "Saudações", TextXAlignment = "Left" })
+                SecSaudacoesBFE:Paragraph({ Title = "Saudações, Instrutor Fantasma.", Desc = "" })
+                SecSaudacoesBFE:Button({ Title = "Copiar Saudação 1", Icon = "copy", Callback = function() CopiarTexto("Saudações, Instrutor Fantasma.") end })
+                SecSaudacoesBFE:Paragraph({ Title = "Saudações, Auxiliar Fantasma.", Desc = "" })
+                SecSaudacoesBFE:Button({ Title = "Copiar Saudação 2", Icon = "copy", Callback = function() CopiarTexto("Saudações, Auxiliar Fantasma.") end })
+                SecSaudacoesBFE:Paragraph({ Title = "Com licença, senhor(es) Fantasma(s).", Desc = "" })
+                SecSaudacoesBFE:Button({ Title = "Copiar Saudação 3", Icon = "copy", Callback = function() CopiarTexto("Com licença, senhor(es) Fantasma(s).") end })
+                
+                local SecFinal1 = NovaAba:Section({ Title = "Final 1: O que é o BFE?", TextXAlignment = "Left" })
+                SecFinal1:Paragraph({ Title = "O que é o BFE?", Desc = "O BFE é a divisão responsável por realizar operações especiais, proteger o quartel e manter a ordem e a segurança do Exército." })
+                SecFinal1:Button({ Title = "Copiar Resposta", Icon = "copy", Callback = function() CopiarTexto("O BFE é a divisão responsável por realizar operações especiais, proteger o quartel e manter a ordem e a segurança do Exército.") end })
+                
+                local SecFinal2 = NovaAba:Section({ Title = "Final 2: Função do BFE", TextXAlignment = "Left" })
+                SecFinal2:Paragraph({ Title = "Qual a função do Batalhão de Forças Especiais?", Desc = "Formar militares de elite por meio de treinamentos, patrulhamentos e operações, mantendo a disciplina e a organização da divisão." })
+                SecFinal2:Button({ Title = "Copiar Resposta", Icon = "copy", Callback = function() CopiarTexto("Formar militares de elite por meio de treinamentos, patrulhamentos e operações, mantendo a disciplina e a organização da divisão.") end })
+                
+                local SecFinal3 = NovaAba:Section({ Title = "Final 3: Escudo do BFE", TextXAlignment = "Left" })
+                SecFinal3:Paragraph({ Title = "Quais as características do escudo do BFE?", Desc = "Fundo preto com bordas amarelas. No centro há um paraquedas branco junto de uma faca vermelha e, na parte inferior, a faixa “Forças Especiais”." })
+                SecFinal3:Button({ Title = "Copiar Resposta", Icon = "copy", Callback = function() CopiarTexto("Fundo preto com bordas amarelas. No centro há um paraquedas branco junto de uma faca vermelha e, na parte inferior, a faixa “Forças Especiais”.") end })
+
+            -- =========================================
+            -- ABA BIP
+            -- =========================================
+            senão se selecionado == "BIP" então
+                local SecSobre = NovaAba:Section({ Title = "Sobre o BIP", TextXAlignment = "Left" })
+                SecSobre:Paragraph({ Title = "A Brigada de Infantaria Paraquedista (BIP) é uma tropa de elite que se desloca por via aérea, sendo capaz de realizar operações rápidas em qualquer terreno, ocorrendo como força de choque.", Desc = "" })
+                SecSobre:Button({ Title = "Copiar Informação", Icon = "copy", Callback = function() CopiarTexto("A Brigada de Infantaria Paraquedista (BIP) é uma tropa de elite que se desloca por via aérea, sendo capaz de realizar operações rápidas em qualquer terreno, moderna como força de choque.") end })
+
+                local SecInfoBIP = NovaAba:Section({ Title = "🪂 Informações BIP", TextXAlignment = "Left" })
+                SecInfoBIP:Paragraph({ Title = "Comandante: Ryan12332123", Desc = "" })
+                SecInfoBIP:Button({ Title = "Copiar Comandante", Icon = "copy", Callback = function() CopiarTexto("Ryan12332123") end })
+                SecInfoBIP:Paragraph({ Title = "Subcomandante: Caiogg17", Desc = "" })
+                SecInfoBIP:Button({ Title = "Copiar Subcomandante", Icon = "copy", Callback = function() CopiarTexto("Caiogg17") end })
+                
+                local SecLemaBIP = NovaAba:Section({ Title = "Lema do BIP", TextXAligment = "Left" })
+                SecLemaBIP:Paragraph({ Title = '"Do Céu à Missão, Do Alto Com Disciplina, Do Céu Cumprimos a Missão."', Desc = "" })
+                SecLemaBIP:Button({ Title = "Copiar Lema", Icon = "copy", Callback = function() CopiarTexto("Do Céu à Missão, Do Alto Com Disciplina, Do Céu Cumprimos a Missão.") end })
+
+            -- =========================================
+            -- ABA CIE
+            -- =========================================
+            senão se selecionado == "CIE" então
+                local Secmen = NovaAba:Section({ Title = "até o CIE", TextXAligment = "Left" })
+                SecSobre:Paragraph({ Title = "O Centro de Inteligência do Exército (CIE) é o órgão responsável pela produção de conhecimentos de inteligência, fundamentais para a tomada de decisões e para a segurança das operações.", Desc = "" })
+                SecSobre:Button({ Title = "Copiar Informação", Icon = "copy", Callback = function() CopiarTexto("O Centro de Inteligência do Exército (CIE) é o órgão responsável pela produção de conhecimentos de inteligência, fundamentais para a tomada de decisões e para a segurança das operações.") end })
+
+                local SecInfoCIE = NovaAba:Section({ Title = "🕵‍♂️ Informações CIE", TextXAlignment = "Left" })
+                SecInfoCIE:Paragraph({ Title = "Criador: vicofjgfhf", Desc = "" })
+                SecInfoCIE:Button({ Title = "Copiar Criador", Icon = "copy", Callback = function() CopiarTexto("vicofjgfhf") end })
+                SecInfoCIE:Paragraph({ Title = "Sub criador: RIP_dabfj8w", Desc = "" })
+                SecInfoCIE:Button({ Title = "Copiar Sub criador", Icon = "copy", Callback = function() CopiarTexto("RIP_dabfj8w") end })
+                SecInfoCIE:Paragraph({ Title = "Comandante: eriqurrr.", Desc = "" })
+                SecInfoCIE:Button({ Title = "Copiar Comandante", Icon = "copy", Callback = function() CopiarTexto("eriqurrr.") end })
+                SecInfoCIE:Paragraph({ Title = "Subcomandante: Rodrigopao8", Desc = "" })
+                SecInfoCIE:Button({ Title = "Copiar Subcomandante", Icon = "copiar", Callback = function() CopiarTexto("Rodrigopao8") end })
+                
+                local SecSaudacoesCIE = NovaAba:Section({ Title = "Saudações", TextXAlignment = "Left" })
+                SecSaudacoesCIE:Paragraph({ Title = "Saudações, senhores Agentes.", Desc = "" })
+                SecSaudacoesCIE:Button({ Title = "Copiar Saudação 1", Icon = "copy", Callback = function() CopiarTexto("Saudações, senhores Agentes.") end })
+                SecSaudacoesCIE:Paragraph({ Title = "Saudações, senhores Fantasmas.", Desc = "" })
+                SecSaudacoesCIE:Button({ Title = "Copiar Saudação 2", Icon = "copy", Callback = function() CopiarTexto("Saudações, senhores Fantasmas.") end })
+                SecSaudacoesCIE:Paragraph({ Title = "Saudações, senhor Agente.", Desc = "" })
+                SecSaudacoesCIE:Button({ Title = "Copiar Saudação 3", Icon = "copy", Callback = function() CopiarTexto("Saudações, senhor Agente.") end })
+                SecSaudacoesCIE:Paragraph({ Title = "Saudações, senhor Fantasma.", Desc = "" })
+                SecSaudacoesCIE:Button({ Title = "Copiar Saudação 4", Icon = "copy", Callback = function() CopiarTexto("Saudações, senhor Fantasma.") end })
+                
+                local SecLemaCIE = NovaAba:Section({ Title = "Lema CIE", TextXAligment = "Left" })
+                SecLemaCIE:Paragraph({ Title = "Inteligência para Vitória & Saber para Prever.", Desc = "" })
+                SecLemaCIE:Button({ Title = "Copiar Lema", Icon = "copy", Callback = function() CopiarTexto("Inteligência para Vitória & Saber para Prever.") end })
+
+            -- =========================================
+            -- ABA REC-MEC
+            -- =========================================
+            senão se selecionado == "REC-MEC" então
+                local Sec3 = NovaAba:Section({ Title = "sobre o REC-MEC", TextXAligment = "Left" })
+                SecSobre:Paragraph({ Title = "O Reconhecimento Mecanizado (REC-MEC) é a unidade de cavalaria blindada responsável por missões de reconhecimento, segurança e combate, utilizando veículos blindados para alta mobilidade.", Desc = "" })
+                SecSobre:Button({ Title = "Copiar Informação", Icon = "copy", Callback = function() CopiarTexto("O Reconhecimento Mecanizado (REC-MEC) é a unidade de cavalaria blindada responsável por missões de reconhecimento, segurança e combate, utilizando veículos blindados para alta.") end })
+
+                local SecInfoREC = NovaAba:Section({ Title = "🐎 Informações REC-MEC", TextXAlignment = "Left" })
+                SecInfoREC:Paragraph({ Title = "Comandante: terro_2433.", Desc = "" })
+                SecInfoREC:Button({ Title = "Copiar Comandante", Icon = "copy", Callback = function() CopiarTexto("terro_2433.") end })
+                SecInfoREC:Paragraph({ Title = "Subcomandante: Contanum5bl", Desc = "" })
+                SecInfoREC:Button({ Title = "Copiar Subcomandante", Icon = "copy", Callback = function() CopiarTexto("Contanum5bl") end })
+                
+                local SecLemaREC = NovaAba:Section({ Title = "Lema REC-MEC", TextXAligment = "Left" })
+                SecLemaREC:Paragraph({ Title = "Haverá sempre uma Cavalaria! Aço na mente, motor no peito e honra na missão!", Desc = "" })
+                SecLemaREC:Button({ Title = "Copiar Lema", Icon = "copy", Callback = function() CopiarTexto("Haverá sempre uma Cavalaria! Aço na mente, motor no peito e honra na missão!") end })
+                
+                local SecSaudacoesREC = NovaAba:Section({ Title = "Saudações", TextXAlignment = "Left" })
+                SecSaudacoesREC:Paragraph({ Title = "Saudações, senhores Cavaleiros.", Desc = "" })
+                SecSaudacoesREC:Button({ Title = "Copiar Saudação 1", Icon = "copy", Callback = function() CopiarTexto("Saudações, senhores Cavaleiros.") end })
+                SecSaudacoesREC:Paragraph({ Title = "Saudações, senhor Cavaleiro.", Desc = "" })
+                SecSaudacoesREC:Button({ Title = "Copiar Saudação 2", Icon = "copy", Callback = function() CopiarTexto("Saudações, senhor Cavaleiro.") end })
+                
+                local SecLicencaREC = NovaAba:Section({ Title = "Licença", TextXAlignment = "Left" })
+                SecLicençaREC:Paragraph({ Title = "Licença, senhores Cavaleiros.", Desc = "" })
+                SecLicencaREC:Button({ Title = "Copiar Licença 1", Icon = "copiar", Callback = function() CopiarTexto("Licença, senhores Cavaleiros.") end })
+                SecLicençaREC:Paragraph({ Title = "Licença, senhor Cavaleiro.", Desc = "" })
+                SecLicencaREC:Button({ Title = "Copiar Licença 2", Icon = "copiar", Callback = function() CopiarTexto("Licença, senhor Cavaleiro.") end })
+                
+                local SecComLicençaREC = NovaAba:Section({ Title = "Com licença", TextXAlignment = "Left" })
+                SecComLicençaREC:Paragraph({ Title = "Com licença, senhores Cavaleiros.", Desc = "" })
+                SecComLicençaREC:Button({ Title = "Copiar Com licença 1", Icon = "copy", Callback = function() CopiarTexto("Com licença, senhores Cavaleiros.") end })
+                SecComLicençaREC:Paragraph({ Title = "Com licença, senhor Cavaleiro.", Desc = "" })
+                SecComLicençaREC:Button({ Title = "Copiar Com licença 2", Icon = "copy", Callback = function() CopiarTexto("Com licença, senhor Cavaleiro.") end })
+                
+                local SecMarchaTurno = NovaAba:Section({ Title = "Marcha (Turno)", TextXAlignment = "Left" })
+                SecMarchaTurno:Paragraph({ Title = "ATENÇÃO TURNO, PREPARAR PARA MARCHAR!", Desc = "" })
+                SecMarchaTurno:Button({ Title = "Copiar Marcha 1", Icon = "copiar", Callback = function() CopiarTexto("ATENÇÃO TURNO, PREPARAR PARA MARCHAR!") end })
+                SecMarchaTurno:Paragraph({ Title = "ATENÇÃO TURNO, MARCHEM!", Desc = "" })
+                SecMarchaTurno:Button({ Title = "Copiar Marcha 2", Icon = "copiar", Callback = function() CopiarTexto("ATENÇÃO TURNO, MARCHEM!") end })
+                
+                local SecMarchaPelotao = NovaAba:Section({ Title = "Marcha (Pelotão)", TextXAlignment = "Left" })
+                SecMarchaPelotao:Paragraph({ Title = "ATENÇÃO PELOTÃO, PREPARAR PARA MARCHAR!", Desc = "" })
+                SecMarchaPelotao:Button({ Title = "Copiar Marcha 1", Icon = "copiar", Callback = function() CopiarTexto("ATENÇÃO PELOTÃO, PREPARAR PARA MARCHAR!") end })
+                SecMarchaPelotao:Paragraph({ Title = "ATENÇÃO PELOTÃO, MARCHEM!", Desc = "" })
+                SecMarchaPelotao:Button({ Title = "Copiar Marcha 2", Icon = "copiar", Callback = function() CopiarTexto("ATENÇÃO PELOTÃO, MARCHEM!") end })
+
+            -- =========================================
+            -- ABA BPE
+            -- =========================================
+            senão se selecionado == "BPE" então
+                local Sec3 = NovaAba:Section({ Title = "até o BPE", TextXAligment = "Left" })
+                SecSobre:Paragraph({ Title = "O Batalhão de Polícia do Exército (BPE) é responsável pela segurança das instalações, autoridades e pelo policiamento ostensivo militar, garantindo a disciplina e a ordem.", Desc = "" })
+                SecSobre:Button({ Title = "Copiar Informação", Icon = "copy", Callback = function() CopiarTexto("O Batalhão de Polícia do Exército (BPE) é responsável pela segurança das instalações, autoridades e pelo policiamento ostensivo militar, garantindo a disciplina e a ordem.") end })
+
+                local SecInfoBPE = NovaAba:Section({ Title = "👮‍♂️ Perguntas BPE", TextXAligment = "Left" })
+                pergunta local = {
+                    {q = "Quais características são fundamentais para um militar do BPE?", r = "Disciplina, responsabilidade, respeito, preparo físico, equilíbrio emocional e comprometimento com a missão."},
+                    {q = "Qual é a importância do planejamento antes de uma operação do BPE?", r = "Permite identificar riscos, organizar recursos, definir funções e aumentar as chances de sucesso da missão."},
+                    {q = "Como o BPE deve proceder diante de uma ocorrência envolvida em um militar indisciplinado?", r = "Agir com imparcialidade, conter a situação, registrar a ocorrência e encaminhá-lo ao superior responsável."},
+                    {q = "O que deve ser feito ao encontrar um objeto suspeito em uma instalação militar?", r = "Isolar a área, impedir a aproximação de pessoas e comunicar imediatamente ao comando para as providências possíveis."},
+                    {q = "Qual é a função do BPE no controle de acesso durante eventos militares?", r = "Fiscalizar a entrada e saída de pessoas e veículos, verificar autorizações e manter a segurança do local."},
+                    {q = "Por que o trabalho em equipe é essencial para o BPE?", r = "Porque permite melhor progressão, aumenta a eficiência das operações e fortalece a segurança da missão."},
+                    {q = "Qual é a missão principal do BPE em operações militares?", r = "Garantir a disciplina, a segurança e o cumprimento das ordens durante as operações."},
+                    {q = "Como o BPE deve agir ao receber uma ordem de um superior hierárquico?", r = "Deve cumprir a ordem de forma imediata, respeitosa e eficiente, desde que esteja de acordo com as normas e disposições."},
+                    {q = "Qual é a importância da disciplina para um militar do BPE?", r = "A disciplina garante organização, respeito à hierarquia, eficiência nas missões e o bom funcionamento da unidade."},
+                    {q = "Como o BPE atua na proteção de autoridades militares?", r = "Realiza escolas, controle de acesso, monitora o ambiente e medidas preventivas para garantir a segurança da autoridade."}
+                }
+                para i, item em ipairs(perguntas) do
+                    SecInfoBPE:Paragraph({ Title = i .. ". " .. item.q, Desc = "Resposta: " .. item.r })
+                    SecInfoBPE:Button({ Title = "Copiar Resposta "..i, Icon = "copy", Callback = function() CopiarTexto(item.r) end })
+                fim
+                
+                local SecOrgBPE = NovaAba:Section({ Title = "📋 Organização BPE", TextXAlignment = "Left" })
+                
+                SecOrgBPE:Paragraph({ Title = "Apresentação", Desc = "Todos os membros do TAF devem estar carecas, sem boina e sem nenhum equipamento." })
+                SecOrgBPE:Button({ Title = "Copiar Apresentação", Icon = "copy", Callback = function() CopiarTexto("Todos os membros do TAF devem estar carecas, sem boina e sem nenhum equipamento.") end })
+                
+                -- SAUDAÇÕES SEPARADAS:
+                SecOrgBPE:Paragraph({ Title = "Saudação 1", Desc = "Saudações, senhor Policial." })
+                SecOrgBPE:Button({ Title = "Copiar Saudação 1", Icon = "copy", Callback = function() CopiarTexto("Saudações, senhor Policial.") end })
+                
+                SecOrgBPE:Paragraph({ Title = "Saudação 2", Desc = "Saudações, senhores." })
+                SecOrgBPE:Button({ Title = "Copiar Saudação 2", Icon = "copy", Callback = function() CopiarTexto("Saudações, senhores.") end })
+                
+                -- PARKOURS SEPARADOS:
+                SecOrgBPE:Paragraph({ Title = "Parkour 1", Desc = "4 segundos" })
+                SecOrgBPE:Button({ Title = "Copiar Parkour 1", Icon = "copy", Callback = function() CopiarTexto("4 segundos") end })
+                
+                SecOrgBPE:Paragraph({ Title = "Parkour 2", Desc = "7 segundos" })
+                SecOrgBPE:Button({ Title = "Copiar Parkour 2", Icon = "copy", Callback = function() CopiarTexto("7 segundos") end })
+                
+                SecOrgBPE:Paragraph({ Title = "Parkour 3", Desc = "5 segundos" })
+                SecOrgBPE:Button({ Title = "Copiar Parkour 3", Icon = "copy", Callback = function() CopiarTexto("5 segundos") end })
+                
+                SecOrgBPE:Paragraph({ Title = "Parkour 4", Desc = "4 segundos" })
+                SecOrgBPE:Button({ Title = "Copiar Parkour 4", Icon = "copy", Callback = function() CopiarTexto("4 segundos") end })
+                
+                SecOrgBPE:Paragraph({ Title = "Créditos", Desc = "@Rick&Morty" })
+                SecOrgBPE:Button({ Title = "Copiar Créditos", Icon = "copy", Callback = function() CopiarTexto("@Rick&Morty") end })
+
+            -- =========================================
+            -- ABA BI CAAT
+            -- =========================================
+            senão se selecionado == "BI CAAT" então
+                local SecSobre = NovaAba:Section({ Title = "Sobre o BI CAAT", TextXAlignment = "Left" })
+                SecSobre:Paragraph({ Title = "O Batalhão de Infantaria de Caatinga (BI CAAT) é uma unidade especializada em operações no bioma da Caatinga, adaptando-se às condições adversárias do sertão e competitiva na defesa do território nacional.", Desc = "" })
+                SecSobre:Button({ Title = "Copiar Informação", Icon = "copy", Callback = function() CopiarTexto("O Batalhão de Infantaria de Caatinga (BI CAAT) é uma unidade especializada em operações no bioma da Caatinga, adaptando-se às condições adversas do sertão e enfrentando na defesa do território nacional.") end })
+
+                local SecInfoCAAT = NovaAba:Section({ Title = "🌵 Informações BI CAAT", TextXAlignment = "Left" })
+                SecInfoCAAT:Paragraph({ Title = "Comandante: gabrielcm04", Desc = "" })
+                SecInfoCAAT:Button({ Title = "Copiar Comandante", Icon = "copy", Callback = function() CopiarTexto("gabrielcm04") end })
+                SecInfoCAAT:Paragraph({ Title = "Subcomandante: Plk_Ln17.", Desc = "" })
+                SecInfoCAAT:Button({ Title = "Copiar Subcomandante", Icon = "copy", Callback = function() CopiarTexto("Plk_Ln17.") end })
+                
+                local SecLemaCAAT = NovaAba:Section({ Title = "Lema BI CAAT", TextXAlignment = "Left" })
+                SecLemaCAAT:Paragraph({ Title = "“O pai cria, a mãe educa e a Caatinga elimina.”", Desc = "" })
+                SecLemaCAAT:Button({ Title = "Copiar Lema", Icon = "copy", Callback = function() CopiarTexto("O pai cria, a mãe educa e a Caatinga elimina.") end })
+                
+                local SecSaudacoesCAAT = NovaAba:Section({ Title = "Saudações", TextXAlignment = "Left" })
+                SecSaudacoesCAAT:Paragraph({ Title = "Saudações, senhores Guardiões da Caatinga.", Desc = "" })
+                SecSaudacoesCAAT:Button({ Title = "Copiar Saudação 1", Icon = "copy", Callback = function() CopiarTexto("Saudações, senhores Guardiões da Caatinga.") end })
+                SecSaudacoesCAAT:Paragraph({ Title = "Saudações, senhor Guardião da Caatinga.", Desc = "" })
+                SecSaudacoesCAAT:Button({ Title = "Copiar Saudação 2", Icon = "copy", Callback = function() CopiarTexto("Saudações, senhor Guardião da Caatinga.") end })
+                
+                local SecPergCAAT = NovaAba:Section({ Title = "Perguntas BI CAAT", TextXAlignment = "Left" })
+                SecPergCAAT:Paragraph({ Title = "Por que você quer entrar no BI CAAT?", Desc = "Quero entrar no BI CAAT porque tenho interesse em fazer parte de uma unidade que valoriza a disciplina, o respeito, a responsabilidade e o trabalho em equipe." })
+                SecPergCAAT:Button({ Title = "Copiar Resposta 1", Icon = "copy", Callback = function() CopiarTexto("Quero entrar no BI CAAT porque tenho interesse em fazer parte de uma unidade que valoriza a disciplina, o respeito, a responsabilidade e o trabalho em equipe.") end })
+                
+                SecPergCAAT:Paragraph({ Title = "Por que a disciplina é importante dentro do BI CAAT?", Desc = "A disciplina é importante dentro do BI CAAT porque mantém a organização, o respeito à posição e o bom funcionamento da unidade" })
+                SecPergCAAT:Button({ Title = "Copiar Resposta 2", Icon = "copy", Callback = function() CopiarTexto("A disciplina é importante dentro do BI CAAT porque mantém a organização, o respeito à posição e o bom funcionamento da unidade") end })
+                
+                SecPergCAAT:Paragraph({ Title = "Qual a importância do BI CAAT no Exército Brasileiro?", Desc = "O BI CAAT é importante porque representa uma unidade de Infantaria de Caatinga que valoriza a disciplina, a responsabilidade, o respeito à hierarquia e o trabalho em equipe." })
+                SecPergCAAT:Button({ Title = "Copiar Resposta 3", Icon = "copy", Callback = function() CopiarTexto("O BI CAAT é importante porque representa uma unidade de Infantaria de Caatinga que valoriza a disciplina, a responsabilidade, o respeito à ordem e ao trabalho em equipe.") end })
+
+            -- =========================================
+            -- ABA CIGS
+            -- =========================================
+            senão se selecionado == "CIGS" então
+                local Secman = NovaAba:Section({ Title = "até o CIGS", TextXAligment = "Left" })
+                SecSobre:Paragraph({ Title = "O Centro de Instrução de Guerra na Selva (CIGS) é a unidade responsável por formar e especializar militares para atuar no bioma da Amazônia, com foco em operações de selva e sobrevivência em ambiente hostil.", Desc = "" })
+                SecSobre:Button({ Title = "Copiar Informação", Icon = "copy", Callback = function() CopiarTexto("O Centro de Instrução de Guerra na Selva (CIGS) é a unidade responsável por formar e especializar militares para atuar no bioma da Amazônia, com foco em operações de selva e sobrevivência em ambiente hostil.") end })
+
+                local SecInfoCIGS = NovaAba:Section({ Title = "🐆 Informações CIGS", TextXAlignment = "Left" })
+                SecInfoCIGS:Paragraph({ Title = "Comandante: Sagas", Desc = "" })
+                SecInfoCIGS:Button({ Title = "Copiar Comandante", Icon = "copy", Callback = function() CopiarTexto("Sagas") end })
+                SecInfoCIGS:Paragraph({ Title = "Subcomandante: Deselegant", Desc = "" })
+                SecInfoCIGS:Button({ Title = "Copiar Subcomandante", Icon = "copy", Callback = function() CopiarTexto("Deselegant") end })
+                
+                local SecLemaCIGS = NovaAba:Section({ Title = "Lema CIGS", TextXAligment = "Left" })
+                SecLemaCIGS:Paragraph({ Title = '"Treinar para resistir, Combater para vencer."', Desc = "" })
+                SecLemaCIGS:Button({ Title = "Copiar Lema", Icon = "copy", Callback = function() CopiarTexto("Treinar para resistir, Combater para vencer.") end })
+                
+                local SecSaudacoesCIGS = NovaAba:Section({ Title = "Promomes (Saudações)", TextXAlignment = "Left" })
+                SecSaudacoesCIGS:Paragraph({ Title = "Saudações, senhor Guerreiro de Selva.", Desc = "" })
+                SecSaudacoesCIGS:Button({ Title = "Copiar Promome 1", Icon = "copy", Callback = function() CopiarTexto("Saudações, senhor Guerreiro de Selva.") end })
+                SecSaudacoesCIGS:Paragraph({ Title = "Saudações, senhores Guerreiros de Selva.", Desc = "" })
+                SecSaudacoesCIGS:Button({ Title = "Copiar Promome 2", Icon = "copy", Callback = function() CopiarTexto("Saudações, senhores Guerreiros de Selva.") end })
+                
+                local SecInicioCIGS = NovaAba:Section({ Title = "Início do TAF", TextXAlignment = "Left" })
+                SecInicioCIGS:Paragraph({ Title = "Retirar boina, dar saudações ao instrutor e passar pelos escudos.", Desc = "" })
+                SecInicioCIGS:Button({ Title = "Copiar Início", Icon = "copy", Callback = function() CopiarTexto("Retirar boina, dar saudações ao instrutor e passar pelos escudos.") end })
+
+            -- =========================================
+            -- ABA CYBER
+            -- =========================================
+            senão se selecionado == "CYBER" então
+                local SecSobre = NovaAba:Section({ Title = "Sobre o CYBER", TextXAligment = "Left" })
+                SecSobre:Paragraph({ Title = "O Comando de Defesa Cibernética (COMDCIBER) é o órgão responsável por proteger as redes e sistemas do Exército, garantindo a segurança no ciberespaço e a soberania nacional no ambiente digital.", Desc = "" })
+                SecSobre:Button({ Title = "Copiar Informação", Icon = "copy", Callback = function() CopiarTexto("O Comando de Defesa Cibernética (COMDCIBER) é o órgão responsável por proteger as redes e sistemas do Exército, garantindo a segurança no ciberespaço e a soberania nacional no ambiente digital.") end })
+
+                local SecInfoCYBER = NovaAba:Section({ Title = "🖥 Informações CYBER", TextXAlignment = "Left" })
+                SecInfoCYBER:Paragraph({ Title = "Criador: wAnTee16j5156.", Desc = "" })
+                SecInfoCYBER:Button({ Title = "Copiar Criador", Icon = "copy", Callback = function() CopiarTexto("wAnTee16j5156.") end })
+                SecInfoCYBER:Paragraph({ Title = "Dono: MaxTheJp1.", Desc = "" })
+                SecInfoCYBER:Button({ Title = "Copiar Dono 1", Icon = "copy", Callback = function() CopiarTexto("MaxTheJp1.") end })
+                SecInfoCYBER:Paragraph({ Title = "Dono: ItsMeLyrio.", Desc = "" })
+                SecInfoCYBER:Button({ Title = "Copiar Dono 2", Icon = "copy", Callback = function() CopiarTexto("ItsMeLyrio.") end })
+                SecInfoCYBER:Paragraph({ Title = "Doação: Gabriel2444q.", Desc = "" })
+                SecInfoCYBER:Button({ Title = "Copiar Dono 3", Icon = "copy", Callback = function() CopiarTexto("Gabriel2444q.") end })
+                SecInfoCYBER:Paragraph({ Title = "Comandante: highanddry98", Desc = "" })
+                SecInfoCYBER:Button({ Title = "Copiar Comandante", Icon = "copy", Callback = function() CopiarTexto("highanddry98") end })
+                SecInfoCYBER:Paragraph({ Title = "Subcomandante: Não tem.", Desc = "" })
+                SecInfoCYBER:Button({ Title = "Copiar Subcomandante", Icon = "copiar", Callback = function() CopiarTexto("Não tem.") end })
+                
+                local SecSaudacoesCYBER = NovaAba:Section({ Title = "Saudações", TextXAlignment = "Left" })
+                SecSaudacoesCYBER:Paragraph({ Title = "Saudações, senhores Analistas.", Desc = "" })
+                SecSaudacoesCYBER:Button({ Title = "Copiar Saudação", Icon = "copy", Callback = function() CopiarTexto("Saudações, senhores Analistas.") end })
+                
+                local SecLemaCYBER = NovaAba:Section({ Title = "Lema CYBER", TextXAligment = "Left" })
+                SecLemaCYBER:Paragraph({ Title = "Segurança no ciberespaço, soberania para a Nação.", Desc = "" })
+                SecLemaCYBER:Button({ Title = "Copiar Lema", Icon = "copy", Callback = function() CopiarTexto("Segurança no ciberespaço, soberania para a Nação.") end })
+                
+                local SecJuramentoCYBER = NovaAba:Section({ Title = "Juramento", TextXAligment = "Left" })
+                SecJuramentoCYBER:Paragraph({ Title = "JURO GUARDAR SIGILO SOBRE TUDO QUE VER E OUVRIR NO COMDCIBER!", Desc = "" })
+                SecJuramentoCYBER:Button({ Title = "Copiar Juramento", Icon = "copy", Callback = function() CopiarTexto("JURO GUARDAR SIGILO SOBRE TUDO QUE VER E OUVRIR NO COMDCIBER!") end })
+
+            fim
+            
+            task.wait(0.2)
+            TabPrincipal:Select()
+            task.wait(0.1)
+            NovaAba:Select()
+            
+        outro
+            AbasCriadas[selecionado]:Selecionar()
+        fim
+    fim,
+})
+
+-- =========================================
+-- TAG DE FPS
+-- =========================================
+local FPSTag = Window:Tag({ Title = "FPS: 0", Color = Color3.fromRGB(100, 150, 255) })
+local RunService = jogo:GetService("RunService")
+local lastUpdate = tick()
+local frameCount = 0
+
+RunService.RenderStepped:Connect(function()
+    Contagem de quadros = Contagem de quadros + 1
+    local agora = tick()
+    se agora - últimaAtualização >= 1 então
+        local fps = math.floor(frameCount / (agora - últimaAtualização))
+        FPSTag:SetTitle("FPS: " .. fps)
+
+        se fps >= 50 então FPSTag:SetColor(Color3.fromRGB(0, 255, 0))
+        senão se fps >= 30 então FPSTag:SetColor(Color3.fromRGB(255, 200, 0))
+        senão FPSTag:SetColor(Color3.fromRGB(255, 0, 0)) fim
+
+        frameCount = 0
+        últimaAtualização = agora
+    fim
+fim)
